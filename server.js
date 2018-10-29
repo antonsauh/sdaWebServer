@@ -4,11 +4,10 @@ const app = express();
 
 const port = 5000;
 
-app.set('port', process.env.port || port); // set express to use this port
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json()); // parse form data client
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server running on port: ${port}`);
 });
 const apiKey = "key";
