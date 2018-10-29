@@ -53,7 +53,13 @@ if(req.header("key") === apiKey){
         if(tryToLoginUser(req.body.email, req.body.password)) {
             res.status(200);
             res.end("Login confirmed");
+        }else {
+            res.status(400);
+            res.end("Bad credentials");
         }
+    }else {
+        res.status(400);
+        res.end("Bad request");
     }
 } else {
     res.status(401);
