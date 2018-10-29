@@ -41,19 +41,22 @@ const users = [{
     }];
 
 app.get("/users", (req, res, next) => {
+    res.status(200);
 res.json(users)
 });
 
 app.post("/login", (req, res, next) => {
-    console.log(req.body + "-------" + req.header());
+    console.log(req.body + "-------" + req.header);
 if(req.header("key") === apiKey){
     if((req.header.email !== null && req.header.email !== "")
         && (req.header.password !== null && req.header.password)) {
         if(tryToLoginUser(req.body.email, req.body.password)) {
+            res.status(200);
             res.end("Login confirmed");
         }
     }
 } else {
+    res.status(401);
     res.end("Unauthorized request");
 }
 });
@@ -69,11 +72,14 @@ if (req.header("key") === apiKey) {
             password: req.body.password
         });
         new_id++;
+        res.status(200);
         res.end("good");
     }else {
+        res.status(400);
         res.end("User with this email already exists");
     }
 }else {
+    res.status(401);
     res.end("Unauthorized request");
 }
 
