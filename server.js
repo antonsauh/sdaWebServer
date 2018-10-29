@@ -48,7 +48,7 @@ app.get("/users", (req, res, next) => {
 });
 
 app.post("/login", (req, res, next) => {
-    console.log(req.body + "-------" + req.header);
+    console.log(req.body.toString());
 if(req.header("key") === apiKey){
     if((req.body.email !== null && req.body.email !== "")
         && (req.body.password !== null && req.body.password)) {
@@ -71,7 +71,7 @@ if(req.header("key") === apiKey){
 });
 
 app.post("/users", (req, res, next) => {
-    console.log(req.body + "-------" + req.header);
+    console.log(req.body.toString());
 if (req.header("key") === apiKey) {
     if(!usersExists(req.body.email) && userDataPresent(req.body)) {
         users.push({
