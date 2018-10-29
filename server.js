@@ -48,8 +48,8 @@ res.json(users)
 app.post("/login", (req, res, next) => {
     console.log(req.body + "-------" + req.header);
 if(req.header("key") === apiKey){
-    if((req.header.email !== null && req.header.email !== "")
-        && (req.header.password !== null && req.header.password)) {
+    if((req.body.email !== null && req.body.email !== "")
+        && (req.body.password !== null && req.body.password)) {
         if(tryToLoginUser(req.body.email, req.body.password)) {
             res.status(200);
             res.end("Login confirmed");
