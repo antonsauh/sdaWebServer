@@ -4,18 +4,20 @@ const app = express();
 
 const port = 5000;
 
-const allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+const allowCrossDomain = function(req, response, next) {
 
-    // // intercept OPTIONS method
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Credentials", "true");
+    response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+
+    // intercept OPTIONS method
     // if ('OPTIONS' == req.method) {
-    //     res.send(200);
+    //     response.send(200);
     // }
-    else {
-        next();
-    }
+    // else {
+    // }
+    next();
 };
 
 app.use(allowCrossDomain);
