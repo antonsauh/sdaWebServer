@@ -52,6 +52,7 @@ if(req.header("key") === apiKey){
         && (req.body.password !== null && req.body.password)) {
         if(tryToLoginUser(req.body.email, req.body.password)) {
             res.status(200);
+            res.header.sessionCookie = "12345";
             res.end("Login confirmed");
         }else {
             res.status(400);
