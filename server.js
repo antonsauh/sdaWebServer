@@ -62,7 +62,7 @@ if(req.header("key") === apiKey){
 });
 
 app.post("/users", (req, res, next) => {
-    console.log(req.body + "-------" + req.header());
+    console.log(req.body + "-------" + req.header);
 if (req.header("key") === apiKey) {
     if(!usersExists(req.body.email) && userDataPresent(req.body)) {
         users.push({
